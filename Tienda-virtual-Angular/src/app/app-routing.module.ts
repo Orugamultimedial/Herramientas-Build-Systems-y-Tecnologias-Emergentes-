@@ -1,24 +1,21 @@
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router'
-import { LoginComponent } from './login/login.component';
-import { DashboardComponent } from './dashboard/dashboard.component';
-import { ProductDetailComponent } from './product-detail/product-detail.component'
-import { ProductCatalogComponent } from './product-catalog/product-catalog.component';
-import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
+import { Routes, RouterModule } from '@angular/router';
+import { LoginComponent } from './components/login/login.component';
+import { TiendaComponent} from './components/tienda/tienda.component'
+import { CarritoComponent} from './components/carrito/carrito.component'
+import { DetalleProductoComponent} from './components/tienda/detalle-producto/detalle-producto.component'
 
 const routes: Routes = [
-
-  { path: '', redirectTo: '/login', pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
-  { path: 'dashboard', component: DashboardComponent },
-  { path: 'productCatalog', component: ProductCatalogComponent },
-  { path: 'productDetail/:id', component: ProductDetailComponent },
-  { path: 'shoppingCart', component: ShoppingCartComponent }
-
+  { path: 'tienda', component: TiendaComponent},
+  { path: 'tienda/detalle-producto/:id', component: DetalleProductoComponent},
+  { path: 'carrito', component: CarritoComponent},
+  { path: '**', pathMatch: 'full', redirectTo: 'login' }
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
+  providers: []
 })
-export class AppRoutingModule { }
+export class TiendaRoutingModule { }
